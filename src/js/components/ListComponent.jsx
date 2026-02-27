@@ -6,6 +6,10 @@ function Listcomponent() {
     const [textoNuevo, setTextoNuevo] = useState("")
 
     const agregarTareas = () => {
+        if (textoNuevo.trim() ==="" ){
+            alert("No puedes agregar una tarea vacia")
+            return
+        } 
         setTareas([...tareas, { texto: textoNuevo }]);
         setTextoNuevo("")
     }
@@ -39,7 +43,7 @@ function Listcomponent() {
 
                         </blockquote>
 
-                        <button onClick={agregarTareas} type="button" className="btn btn-primary mb-4">agregar</button>
+                        <button onClick={agregarTareas} type="button" className="btn btn-danger mb-4">agregar</button>
                     </form>
 
 
@@ -49,7 +53,7 @@ function Listcomponent() {
 
                             {tareas.map((t, index) => (
                                 <li key={index} className="lista-tareas-item">{t.texto}
-                                    <button onClick={() => eliminarTarea(index)} className='btn-eliminar'>x</button>
+                                    <button onClick={() => eliminarTarea(index)} className='btn btn-outline-secondary px-1 py-1 m-1' style={{ fontSize: '0.7rem', lineHeight: '1' }}>x</button>
                                 </li>
 
                             ))}
